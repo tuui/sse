@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo-spring-sse</title>
+</head>
+<body>
+<div>
+    test
+    <ul id="bets"></ul>
+</div>
+<script type="application/javascript">
+
+    if (!!window.EventSource) {
+        var eventSource = new EventSource("/place");
+
+        var elements = document.getElementById("bets");
+
+        function add(bet) {
+            var element = document.createElement("li");
+            element.innerHTML = bet.id;
+            elements.appendChild(element);
+            console.log(bet)
+        }
+
+        eventSource.onmessage = function (e) {
+            var message = JSON.parse(e.data);
+            add(message);
+        };
+
+        eventSource.onopen = function (e) {
+            add('connection was opened');
+        };
+
+        eventSource.onerror = function (e) {
+            if (e.readyState == EventSource.CONNECTING) {
+                add('event: CONNECTING');
+            } else if (e.readyState == EventSource.OPEN) {
+                add('event: OPEN');
+            } else if (e.readyState == EventSource.CLOSING) {
+                add('event: CLOSING');
+            } else if (e.readyState == EventSource.CLOSED) {
+                add('event: CLOSED');
+            }
+        };
+    } else {
+        alert('The browser does not support Server-Sent Events');
+    }
+
+</script>
+</body>
+</html>
