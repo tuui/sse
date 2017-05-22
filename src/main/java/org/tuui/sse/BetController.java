@@ -22,7 +22,7 @@ public class BetController {
 	private final static int BET_LIST_SIZE = 100;
 	private final List<Bet> bets = new ArrayList<>();
 
-	@GetMapping("history")
+	@GetMapping("/history")
 	public List<Bet> history() {
 		return bets;
 	}
