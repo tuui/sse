@@ -6,13 +6,12 @@
 </head>
 <body>
 <div>
-    test
     <ul id="bets"></ul>
 </div>
 <script type="application/javascript">
 
     if (!!window.EventSource) {
-        var eventSource = new EventSource("/place");
+        var eventSource = new EventSource("/live");
 
         var elements = document.getElementById("bets");
 
