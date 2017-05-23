@@ -17,7 +17,7 @@ export class BetService {
     return this.http
       //.get('app/heroes/?name=${term}')
       .get('api/history')
-      .map((r: Response) => r.json().data as Bet[])
+      .map((r: Response) => r.json() as Bet[])
       .catch((error: any) => {
           console.error('An error occurred', error);
           return Observable.throw(error.message || error);

@@ -1,7 +1,3 @@
-<h1>
-  History
-</h1>
-
 <table>
 	<thead>
 		<tr>
@@ -17,14 +13,14 @@
 	</thead>
 	<tbody>
 		<tr *ngFor="let bet of bets">
-			<td>{{id}}</td>
-			<td>{{eventId}}</td>
-			<td>{{betOfferId}}</td>
-			<td>{{username}}</td>
-			<td>{{stake}}</td>
-			<td>{{odds}}</td>
-			<td>{{status}}</td>
-			<td>{{placed}}</td>
+			<td>{{bet.id}}</td>
+			<td>{{bet.eventId}}</td>
+			<td>{{bet.betOfferId}}</td>
+			<td>{{bet.username}}</td>
+			<td>{{bet.stake}}</td>
+			<td>{{bet.odds}}</td>
+			<td>{{bet.status}}</td>
+			<td>{{bet.placed}}</td>
 		</tr>
 	</tbody>
 </table>

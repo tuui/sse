@@ -24,7 +24,7 @@ public class BetController {
 	private final static int BET_LIST_SIZE = 100;
 	private final List<Bet> bets = new ArrayList<>();
 
-	@GetMapping("/history")
+	@GetMapping(value = "/history", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Bet> history() {
 		bets.add(generateBet());
 		return bets;
