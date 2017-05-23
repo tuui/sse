@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.util.function.Tuple2;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
 
+@RequestMapping("api")
 @RestController
 public class BetController {
 
@@ -24,6 +26,7 @@ public class BetController {
 
 	@GetMapping("/history")
 	public List<Bet> history() {
+		bets.add(generateBet());
 		return bets;
 	}
 
