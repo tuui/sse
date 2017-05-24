@@ -44,7 +44,7 @@ public class BetController {
 				.betOfferId(generateRandomLong())
 				.username("user_" + generateRandomInt())
 				.stake(new BigDecimal(generateRandomInt()))
-				.odds(generateRandomInt() * 10)
+				.odds(generateRandomInt() * 10 + 100)
 				.status(Bet.StatusEnum.PENDING)
 				.placed(OffsetDateTime.now())
 				.build();

@@ -1,3 +1,26 @@
-<h1>
-  Live
-</h1>
+<table>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>eventId</th>
+			<th>betOfferId</th>
+			<th>username</th>
+			<th>stake</th>
+			<th>odds</th>
+			<th>status</th>
+			<th>placed</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let bet of placedBets">
+			<td>{{bet.id}}</td>
+			<td>{{bet.eventId}}</td>
+			<td>{{bet.betOfferId}}</td>
+			<td>{{bet.username}}</td>
+			<td>{{bet.stake}}</td>
+			<td>{{bet.odds}}</td>
+			<td>{{bet.status}}</td>
+			<td>{{bet.placed | date:'dd.MM.yyyy HH.mm'}}</td>
+		</tr>
+	</tbody>
+</table>

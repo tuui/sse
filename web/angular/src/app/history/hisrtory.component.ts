@@ -3,9 +3,9 @@ import {BetService} from '../shared/bet.service';
 import {Bet} from '../shared/bet.model';
 
 @Component({
-  selector: 'sse-history',
-  templateUrl: './history.component.html',
-  providers: [BetService]
+	selector: 'sse-history',
+	templateUrl: './history.component.html',
+	providers: [BetService]
 })
 
 export class HistoryComponent implements OnInit{
