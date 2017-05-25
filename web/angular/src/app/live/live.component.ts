@@ -36,6 +36,6 @@ export class LiveComponent implements OnInit, OnDestroy{
 
 	ngOnDestroy(): void {
 		console.log('ngOnDestroy');
-		this.subscription.unsubscribe();
+		//this.subscription.unsubscribe();
 	}
 }

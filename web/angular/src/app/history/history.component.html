@@ -24,3 +24,5 @@
 		</tr>
 	</tbody>
 </table>
+<ngb-pagination [collectionSize]="collectionSize" [(page)]="searchBetsRequest.pageNr" (pageChange)="pageChange()"
+				[maxSize]="5" [boundaryLinks]="true" [rotate]=true></ngb-pagination>
