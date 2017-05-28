@@ -12,6 +12,8 @@ import {BetService} from '../shared/bet.service';
 
 export class LiveComponent implements OnInit, OnDestroy{
 
+	max_list_size:number = 20;
+
 	placedBets: Bet[] = [];
 	subscription: Subscription;
  	zone: NgZone;
@@ -26,16 +28,19 @@ export class LiveComponent implements OnInit, OnDestroy{
 		this.subscription = this.betService.getLiveBetsObserver().subscribe({
 		  next: (bet:Bet) => {
 		    this.zone.run(() => {
-		    	this.placedBets.push(bet)
+		    	this.placedBets.unshift(bet);
+		    	if(this.placedBets.length > this.max_list_size){
+		    		this.placedBets.splice(-1, this.placedBets.length - this.max_list_size);
+		    	}
 		    });
 
 		  },
-		  error: (err:any) => console.error('something wrong occurred: ' + err)
+		  error: (err:any) => console.error(err)
 		});
 	}
 
 	ngOnDestroy(): void {
 		console.log('ngOnDestroy');
-		//this.subscription.unsubscribe();
+		this.subscription.unsubscribe();
 	}
 }
