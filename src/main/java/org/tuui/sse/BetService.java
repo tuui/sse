@@ -28,7 +28,7 @@ public class BetService {
 			toIndex = BETS.size();
 		}
 		response.setBets(BETS.subList(fromIndex, toIndex));
-		log.info("fromIndex = {}, toIndex = {}, bets.size() = {}", fromIndex, toIndex, response.getBets().size());
+		log.debug("fromIndex = {}, toIndex = {}, bets.size() = {}", fromIndex, toIndex, response.getBets().size());
 
 		return response;
 	}

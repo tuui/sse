@@ -26,12 +26,8 @@ export class LiveComponent implements OnInit, OnDestroy{
 		this.subscription = this.betService.getLiveBetsObserver().subscribe({
 		  next: (bet:Bet) => {
 		    this.zone.run(() => {
-		    	this.placedBets.unshift(bet);
-		    	if(this.placedBets.length > this.max_list_size){
-		    		this.placedBets.splice(-1, this.placedBets.length - this.max_list_size);
-		    	}
+		    	this.addPlacedBet(bet);
 		    });
-
 		  },
 		  error: (err:any) => console.error(err)
 		});
@@ -40,5 +36,12 @@ export class LiveComponent implements OnInit, OnDestroy{
 	ngOnDestroy(): void {
 		console.log('ngOnDestroy');
 		this.subscription.unsubscribe();
+	}
+
+	private addPlacedBet(bet: Bet): void {
+		this.placedBets.unshift(bet);
+    	if(this.placedBets.length > this.max_list_size){
+    		this.placedBets.splice(-1, this.placedBets.length - this.max_list_size);
+    	}
 	}
 }
