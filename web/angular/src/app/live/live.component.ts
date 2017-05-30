@@ -12,19 +12,17 @@ import {BetService} from '../shared/bet.service';
 
 export class LiveComponent implements OnInit, OnDestroy{
 
-	max_list_size:number = 20;
+	readonly max_list_size:number = 20;
 
 	placedBets: Bet[] = [];
-	subscription: Subscription;
- 	zone: NgZone;
+	private subscription: Subscription;
+ 	private zone: NgZone = new NgZone({enableLongStackTrace: false});
 
 	constructor(private betService: BetService) {		
 	}
 
 	ngOnInit(){
   		console.log('ngOnInit');
-  		this.zone = new NgZone({enableLongStackTrace: false});
-
 		this.subscription = this.betService.getLiveBetsObserver().subscribe({
 		  next: (bet:Bet) => {
 		    this.zone.run(() => {

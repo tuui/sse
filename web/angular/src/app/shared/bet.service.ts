@@ -22,7 +22,6 @@ export class BetService {
     });
 
     return this.http
-      //.get('app/heroes/?name=${term}')
       .post('api/search', JSON.stringify(request), {headers: headers})
       .map((r: Response) => r.json() as SearchBetsResponse[])
       .catch((error: any) => {
@@ -34,8 +33,8 @@ export class BetService {
   getLiveBetsObserver(): any {
     return Observable.create(observer => {
       const eventSource = new EventSource('/api/live');
-      eventSource.onmessage = x => observer.next(JSON.parse(x.data) as Bet);
-      eventSource.onerror = x => observer.error(x);
+      eventSource.onmessage = bet => observer.next(JSON.parse(bet.data) as Bet);
+      eventSource.onerror = error => observer.error(error);
 
       return () => {
         console.log('close eventSource');
