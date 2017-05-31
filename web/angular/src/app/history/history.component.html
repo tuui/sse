@@ -1,34 +1,34 @@
 <table class="table table-hover">
-	<thead>
-		<tr>
-			<th>id</th>
-			<th>eventId</th>
-			<th>betOfferId</th>
-			<th>username</th>
-			<th>stake</th>
-			<th>odds</th>
-			<th>status</th>
-			<th>placed</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let bet of bets">
-			<td>{{bet.id}}</td>
-			<td>{{bet.eventId}}</td>
-			<td>{{bet.betOfferId}}</td>
-			<td>{{bet.username}}</td>
-			<td>{{bet.stake}}</td>
-			<td>{{bet.odds}}</td>
-			<td>{{bet.status}}</td>
-			<td>{{bet.placed | date:'dd.MM.yyyy HH.mm'}}</td>
-		</tr>
-	</tbody>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>eventId</th>
+        <th>betOfferId</th>
+        <th>username</th>
+        <th>stake</th>
+        <th>odds</th>
+        <th>status</th>
+        <th>placed</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let bet of bets">
+        <td>{{bet.id}}</td>
+        <td>{{bet.eventId}}</td>
+        <td>{{bet.betOfferId}}</td>
+        <td>{{bet.username}}</td>
+        <td>{{bet.stake}}</td>
+        <td>{{bet.odds}}</td>
+        <td>{{bet.status}}</td>
+        <td>{{bet.placed | date:'dd.MM.yyyy HH.mm'}}</td>
+    </tr>
+    </tbody>
 </table>
 
 <div class="row">
     <div class="col-centered">
-    	<ngb-pagination [collectionSize]="collectionSize" [(page)]="searchBetsRequest.pageNr" (pageChange)="pageChange()"
-				[maxSize]="5" [boundaryLinks]="true" [rotate]=true></ngb-pagination>    	
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="searchBetsRequest.pageNr" (pageChange)="pageChange()"
+                        [maxSize]="5" [boundaryLinks]="true" [rotate]=true></ngb-pagination>
     </div>
 </div>
 

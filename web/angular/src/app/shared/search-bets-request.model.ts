@@ -1,4 +1,4 @@
 export class SearchBetsRequest {
-	pageNr: number;
-	pageSize: number;
+    pageNr: number;
+    pageSize: number;
 }

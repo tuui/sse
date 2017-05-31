@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SearchBetsRequest {
-	private int pageNr;
-	private int pageSize;
+    private int pageNr;
+    private int pageSize;
 }

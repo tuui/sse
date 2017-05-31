@@ -8,6 +8,6 @@ import java.util.List;
 @Getter
 @Setter
 public class SearchBetsResponse {
-	private int collectionSize;
-	List<Bet> bets;
+    private int collectionSize;
+    List<Bet> bets;
 }
