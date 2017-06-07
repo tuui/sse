@@ -10,8 +10,10 @@ class App extends Component {
       <Router>
         <div>
           <Header />
-          <Route path="/history" component={History}/>
-          <Route path="/live" component={Live}/>
+          <div className="container">
+            <Route path="/history" component={History}/>
+            <Route path="/live" component={Live}/>
+          </div>
         </div>
       </Router>
     );
