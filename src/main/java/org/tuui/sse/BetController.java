@@ -1,5 +1,6 @@
 package org.tuui.sse;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import reactor.util.function.Tuple2;
 import java.time.Duration;
 import java.util.stream.Stream;
 
+@Slf4j
 @RequestMapping("api")
 @RestController
 public class BetController {
@@ -27,6 +29,7 @@ public class BetController {
 
     @GetMapping(value = "/live", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Bet> live() {
+        log.debug("register live");
         Flux<Bet> betFlux = Flux.fromStream(Stream.generate(Bet::generate));
         Flux<Long> durationFlux = Flux.interval(Duration.ofSeconds(1));
         return Flux.zip(betFlux, durationFlux).map(Tuple2::getT1);
