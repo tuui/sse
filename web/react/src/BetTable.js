@@ -1,49 +1,49 @@
-import React from 'react';
+import React from "react";
 
 class BetTable extends React.Component {
-  render() {
-  	var rows = [];
-	this.props.bets.forEach(function(bet) {
-		rows.push(<BetRow bet={bet} key={bet.id}/>);
-	});
-    return (
-		<table className="table table-hover">
-		    <thead>
-		    <tr>
-		        <th>id</th>
-		        <th>eventId</th>
-		        <th>betOfferId</th>
-		        <th>username</th>
-		        <th>stake</th>
-		        <th>odds</th>
-		        <th>status</th>
-		        <th>placed</th>
-		    </tr>
-		    </thead>
-		    <tbody>
-				{rows}
-		    </tbody>
-		</table>
-    );
-  }
+    render() {
+        var rows = [];
+        this.props.bets.forEach(function (bet) {
+            rows.push(<BetRow bet={bet} key={bet.id}/>);
+        });
+        return (
+            <table className="table table-hover">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>eventId</th>
+                    <th>betOfferId</th>
+                    <th>username</th>
+                    <th>stake</th>
+                    <th>odds</th>
+                    <th>status</th>
+                    <th>placed</th>
+                </tr>
+                </thead>
+                <tbody>
+                {rows}
+                </tbody>
+            </table>
+        );
+    }
 }
 
 class BetRow extends React.Component {
-  	render() {
-	  	var bet = this.props.bet;
-	    return (
-	    	<tr>
-				<td>{bet.id}</td>
-		        <td>{bet.eventId}</td>
-		        <td>{bet.betOfferId}</td>
-		        <td>{bet.username}</td>
-		        <td>{bet.stake}</td>
-		        <td>{bet.odds}</td>
-		        <td>{bet.status}</td>
-		        <td>{bet.placed}</td>
-	    	</tr>
-	    );
-	}
+    render() {
+        var bet = this.props.bet;
+        return (
+            <tr>
+                <td>{bet.id}</td>
+                <td>{bet.eventId}</td>
+                <td>{bet.betOfferId}</td>
+                <td>{bet.username}</td>
+                <td>{bet.stake}</td>
+                <td>{bet.odds}</td>
+                <td>{bet.status}</td>
+                <td>{bet.placed}</td>
+            </tr>
+        );
+    }
 }
 
 export default BetTable;
