@@ -1,6 +1,5 @@
 import React from "react";
 import BetTable from "./BetTable";
-// import {EventSource} from "react-native-eventsource";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
@@ -8,6 +7,8 @@ import "rxjs/add/observable/throw";
 
 
 class Live extends React.Component {
+
+    max_list_size = 20;
 
     constructor(props) {
         super(props);
@@ -17,43 +18,36 @@ class Live extends React.Component {
     }
 
     componentDidMount() {
-        console.log('Live componentDidMount');
         this.subscription = this.getLiveBetsObserver().subscribe({
             next: (bet) => {
+                var updatedBets = this.state.bets;
+                updatedBets.unshift(bet);
+                if (updatedBets.length > this.max_list_size) {
+                    updatedBets.splice(-1, updatedBets.length - this.max_list_size);
+                }
                 this.setState({
-                    bets: [bet]
+                    bets: updatedBets
                 });
-
-                console.log('next');
             },
             error: (err) => console.error(err)
         });
     }
 
     getLiveBetsObserver() {
-        console.log('getLiveBetsObserver');
-        // const EventSource = window['EventSource'];
-
         return Observable.create((observer) => {
 
             const eventSource = new EventSource('/api/live');
-            console.log('Observable.create');
             eventSource.onmessage = (bet) => {
                 observer.next(JSON.parse(bet.data));
-                console.log('mess');
             };
             eventSource.onerror = (error) => observer.error(error);
             return () => {
-                console.log('close eventSource');
                 eventSource.close();
             };
         });
     }
 
     componentWillUnmount() {
-        console.log('Live componentWillUnmount');
-        // this.eventSource.close();
-
         this.subscription.unsubscribe();
     }
 

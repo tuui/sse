@@ -1,4 +1,5 @@
 import React from "react";
+import moment from 'moment';
 
 class BetTable extends React.Component {
     render() {
@@ -40,7 +41,7 @@ class BetRow extends React.Component {
                 <td>{bet.stake}</td>
                 <td>{bet.odds}</td>
                 <td>{bet.status}</td>
-                <td>{bet.placed}</td>
+                <td>{moment(bet.placed).format('DD.MM.YYYY HH:mm:ss')}</td>
             </tr>
         );
     }

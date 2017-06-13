@@ -15,7 +15,6 @@ class History extends React.Component {
     }
 
     componentDidMount() {
-        console.log('History componentDidMount');
         this.fetchHistory(this.state.activePage);
     }
 
