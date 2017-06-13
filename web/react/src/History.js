@@ -10,6 +10,7 @@ class History extends React.Component {
             bets: [],
             activePage: 1,
             pageSize: 10,
+            pages: 1,
         };
         this.handlePageSelect = this.handlePageSelect.bind(this);
     }
@@ -40,6 +41,7 @@ class History extends React.Component {
             .then((responseJson) => {
                 this.setState({
                     bets: responseJson.bets,
+                    pages: Math.ceil(responseJson.collectionSize / 10),
                 });
             })
             .catch((error) => {
@@ -53,7 +55,8 @@ class History extends React.Component {
                 <BetTable bets={this.state.bets}/>
                 <div className="row">
                     <div className="col-centered">
-                        <Pagination bsSize="medium" items={this.state.pageSize} activePage={this.state.activePage} onSelect={this.handlePageSelect}/>
+                        <Pagination prev next first last ellipsis boundaryLinks maxButtons={5}
+                                    items={this.state.pages} activePage={this.state.activePage} onSelect={this.handlePageSelect}/>
                     </div>
                 </div>
             </div>
